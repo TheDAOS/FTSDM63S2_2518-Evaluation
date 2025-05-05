@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router";
+
 function BookCard({ book }) {
-
-
+    let navigate = useNavigate();
 
     return (
-        <div className="m-2 p-2 w-70 h-150 bg-sky-200 rounded-md border-2 shadow">
+        <div
+            className="m-2 p-2 w-70 h-150 bg-sky-200 rounded-md border-2 shadow"
+            onClick={
+                () => navigate(`/book/${book.title}`)
+            }
+        >
             <img
                 className="mx-auto h-50 rounded-md mb-5"
                 src={`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg`}
@@ -16,7 +22,7 @@ function BookCard({ book }) {
                 </span>
                 {book.author_name.join()}
             </div>
-        </div>
+        </div >
     )
 }
 
