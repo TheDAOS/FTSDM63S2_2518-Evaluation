@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar";
 import { fetchBooks } from '../redux/bookSlice';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react";
+import LoadingPage from "./LoadingPage";
 
 function ShowBooks() {
     const { loading } = useSelector((state) => state.bookSlice)
@@ -17,7 +18,8 @@ function ShowBooks() {
         <div>
             <SearchBar />
             <Pagination />
-            <BookList />
+            {loading && <LoadingPage />}
+            {!loading && <BookList />}
         </div>
     )
 }

@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       {error && <Error />}
-      {loading && <LoadingPage />}
+      {/* {loading && <LoadingPage />} */}
       <Navbar />
       <div className='flex justify-center'>
         <Routes>
