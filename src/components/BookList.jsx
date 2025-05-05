@@ -4,14 +4,12 @@ import BookCard from "./BookCard";
 
 function BookList() {
     const books = useSelector((state) => state.bookSlice.books)
+    let pageNo = useSelector((state) => state.bookSlice.currentPage)
     const loading = useSelector((state) => state.bookSlice.loading)
-
-    console.log(books)
 
     return (
         <div className="m-2 flex justify-center flex-wrap">
-            {/* {loading && <span>Loading</span>} */}
-            {books?.map((book) => (
+            {books?.slice((pageNo*10)-10, (pageNo*10)).map((book) => (
                 <BookCard book={book} />
             ))}
         </div>

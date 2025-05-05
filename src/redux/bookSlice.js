@@ -9,8 +9,27 @@ const bookSlice = createSlice({
         selectedBook: null,
         loading: false,
         error: null,
+        currentPage: 1,
+        theme: 'Light',
     },
-    reducers: {},
+    reducers: {
+        toggleTheme: (state) => {
+            if (state.theme === 'Light')
+                state.theme = "Dark";
+            else
+                state.theme = 'Light'
+        },
+        nextPage: (state) => {
+            if (state.currentPage <= 10) {
+                state.currentPage++;
+            }
+        },
+        prevPage: (state) => {
+            if (state.currentPage > 1) {
+                state.currentPage--;
+            }
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchBooks.pending, (state) => {
@@ -32,5 +51,5 @@ export const fetchBooks = createAsyncThunk(
     },
 )
 
-// export const { fetchBooks } = bookSlice.actions;
+export const { nextPage, prevPage, toggleTheme } = bookSlice.actions;
 export default bookSlice.reducer;
