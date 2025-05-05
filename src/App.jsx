@@ -1,15 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import { fetchBooks } from './redux/bookSlice';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ShowBooks from './components/ShowBooks';
 import BookDetails from './components/BookDetails';
 
 function App() {
-
-  // const { loading } = useSelector((state) => state.bookSlice)
-  // const dispatch = useDispatch();
 
   return (
     <BrowserRouter>

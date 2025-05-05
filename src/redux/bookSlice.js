@@ -5,7 +5,7 @@ import axios from "axios"
 const bookSlice = createSlice({
     name: 'books',
     initialState: {
-        books: {},
+        books: [],
         selectedBook: null,
         loading: false,
         error: null,
@@ -28,7 +28,7 @@ export const fetchBooks = createAsyncThunk(
     'users/fetchBooks',
     async () => {
         const response = await axios.get('https://openlibrary.org/search.json?q=the');
-        return response.data
+        return response.data.docs
     },
 )
 
