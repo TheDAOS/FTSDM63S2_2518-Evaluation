@@ -29,6 +29,9 @@ const bookSlice = createSlice({
                 state.currentPage--;
             }
         },
+        closeError: (state) => {
+            state.error = null;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -38,6 +41,10 @@ const bookSlice = createSlice({
             .addCase(fetchBooks.fulfilled, (state, action) => {
                 state.loading = false;
                 state.books = action.payload;
+            })
+            .addCase(fetchBooks.rejected, (state) => {
+                state.loading = false;
+                state.error = 'Failed to get Data';
             })
     }
 })
@@ -51,5 +58,9 @@ export const fetchBooks = createAsyncThunk(
     },
 )
 
-export const { nextPage, prevPage, toggleTheme } = bookSlice.actions;
+export const {
+    nextPage, prevPage,
+    toggleTheme,
+    closeError,
+} = bookSlice.actions;
 export default bookSlice.reducer;
